@@ -6,9 +6,11 @@ import { Spinner } from './spinner.component'
 import { ListItem } from './list.component'
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/combineLatest'
+import 'rxjs/add/operator/map'
 import 'rxjs/add/observable/of'
 
 @Component({
+  moduleId: module.id,
   selector: 'feed-view',
   template: `
     <div class="news-view">

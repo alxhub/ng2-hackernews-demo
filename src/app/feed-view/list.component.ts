@@ -4,6 +4,7 @@ import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/share'
 
 @Component({
+  moduleId: module.id,
   selector: '[list-item]',
   template: `
     <span class="score">{{ item.score }}</span>

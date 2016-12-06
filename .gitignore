@@ -1,5 +1,4 @@
+/ngfactory
 /node_modules/
-/lib/
-/release/
-/src/ngfactory/
-/bin/
+/release
+/tmp

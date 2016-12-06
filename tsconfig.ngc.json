@@ -2,7 +2,7 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "module": "commonjs",
+    "module": "es2015",
     "target": "es5",
     "noImplicitAny": false,
     "sourceMap": false,
@@ -10,9 +10,14 @@
     "lib": [
       "es2015",
       "dom"
-    ]
+    ],
+    "outDir": "tmp/ngc"
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "files": [
+    "src/app/env/client.ts",
+    "src/main.ts"
+  ],
+  "angularCompilerOptions": {
+    "genDir": "./ngfactory"
+  }
 }

@@ -5,7 +5,7 @@ import {StoreModule} from '@ngrx/store'
 import {FeedViewModule} from './feed-view/feed-view'
 import {ItemView} from './item-view/item-view'
 
-import {App} from './app'
+import {App} from './component';
 import {HackerNewsAPI} from './services/api'
 import {HackerNewsClientAPI} from './services/api.client'
 
