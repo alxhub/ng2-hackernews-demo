@@ -5,6 +5,5 @@ import {Router} from '@angular/router'
   moduleId: module.id,
   selector: 'hn-app',
   templateUrl: './template.html',
-  styleUrls: ['./style.css'],
 })
 export class App {}

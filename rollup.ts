@@ -12,7 +12,7 @@ function closureCompilerPlugin(options = {}){
   return {
     transformBundle(bundle){
       const compilation = Object.assign({}, options, {
-        jsCode: options.jsCode ? options.jsCode.concat({ src: bundle }) : [{ src: bundle }]
+        jsCode: options['jsCode'] ? options['jsCode'].concat({ src: bundle }) : [{ src: bundle }]
       });
 	  console.log('closure compiler optimizing...');
       const transformed = closure.compile(compilation);
@@ -45,29 +45,31 @@ if(argv.prod){
 }
 
 //build the AOT package
-var buildAOT = rollup.rollup({
-	entry: './lib/main.js',
-	plugins: plugins,
-  context: 'window'
-})
-.then(writeIIFE('./release/hn-app.js'))
-.then(() => {
-  var closureCompiler = new ClosureCompiler({
-    js: './release/hn-app.js',
-    compilation_level: 'SIMPLE',
-    js_output_file: './release/hn-app.min.js',
-    manage_closure_dependencies: false,
-    language_in: 'ECMASCRIPT6_STRICT',
-    language_out: 'ECMASCRIPT5',
-    rewrite_polyfills: false
-  });
-  return new Promise((resolve, reject) => {
-    closureCompiler.run(function(exitCode, stdOut, stdErr) {
-      console.log(exitCode);
-      console.log(stdErr)
-       resolve()
-    });
+export function runRollup() {
+  return rollup.rollup({
+    entry: './tmp/ngc/src/main.js',
+    plugins: plugins,
+    context: 'window'
   })
-})
-.then(() => console.log('built angular2'))
-.catch(err => console.log(err));
+  .then(writeIIFE('./release/hn-app.js'))
+  .then(() => {
+    var closureCompiler = new ClosureCompiler({
+      js: './release/hn-app.js',
+      compilation_level: 'SIMPLE',
+      js_output_file: './release/hn-app.min.js',
+      manage_closure_dependencies: false,
+      language_in: 'ECMASCRIPT6_STRICT',
+      language_out: 'ECMASCRIPT5',
+      rewrite_polyfills: false
+    });
+    return new Promise((resolve, reject) => {
+      closureCompiler.run(function(exitCode, stdOut, stdErr) {
+        console.log(exitCode);
+        console.log(stdErr)
+        resolve()
+      });
+    })
+  })
+  .then(() => console.log('built angular2'))
+  .catch(err => console.log(err));
+}
