@@ -113,6 +113,16 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
+"@types/whatwg-fetch":
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/@types/whatwg-fetch/-/whatwg-fetch-0.0.32.tgz#ded91dbae1e6ffb826f14b171a67e7f7e508d0c5"
+  dependencies:
+    "@types/whatwg-streams" "*"
+
+"@types/whatwg-streams@*":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@types/whatwg-streams/-/whatwg-streams-0.0.1.tgz#b9d8f23d8320939bea12dc7a48e530fdb21009b3"
+
 abbrev@1:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.0.9.tgz#91b4792588a7738c25f35dd6f63752a2f8776135"

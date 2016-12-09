@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import {ReflectiveInjector, Type, NgModuleFactory} from '@angular/core';
 import {COMPILER_PROVIDERS, RuntimeCompiler, ResourceLoader} from '@angular/compiler';
-import {HNServerApp} from '../app/env/server';
 
 class FileLoader implements ResourceLoader {
   get(url: string): Promise<string> {

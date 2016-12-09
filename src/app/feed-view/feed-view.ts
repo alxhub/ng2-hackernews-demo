@@ -13,17 +13,6 @@ import 'rxjs/add/observable/of'
   moduleId: module.id,
   selector: 'feed-view',
   template: `
-    <div class="news-view">
-      <loading-spinner *ngIf="!stories">loading...</loading-spinner>
-    <div class="news-list-nav">
-      nav
-    </div>
-    <div class="news-list">
-      <ul>
-        <li list-item class="list-item" *ngFor="let item of stories | async; trackBy:trackStory" [item]="item"></li>
-      </ul>
-      </div>
-    </div>
 
   `,
   styleUrls: ['./feed-view.css']

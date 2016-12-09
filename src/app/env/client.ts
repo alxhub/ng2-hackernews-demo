@@ -3,6 +3,8 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppModule} from '../module'
 import {App} from '../component';
+import {ClientHnApiModule} from '../client/api';
+import {ClientHttpModule} from '../client/http';
 
 @NgModule({
   bootstrap: [
@@ -10,7 +12,9 @@ import {App} from '../component';
   ],
   imports: [
     BrowserModule,
-    AppModule
+    AppModule,
+    ClientHnApiModule,
+    ClientHttpModule,
   ],
 })
 export class HNClientApp {}

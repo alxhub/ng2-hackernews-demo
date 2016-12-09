@@ -11,7 +11,10 @@
       "es2015",
       "dom"
     ],
-    "outDir": "tmp/ngc"
+    "outDir": "tmp/ngc",
+    "types": [
+      "whatwg-fetch"
+    ]
   },
   "files": [
     "src/app/env/client.ts",
