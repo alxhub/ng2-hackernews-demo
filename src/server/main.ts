@@ -4,6 +4,7 @@ import * as express from 'express';
 import * as fs from 'fs';
 import {compileModule} from './aot';
 import {makeHandler} from './universal';
+import {hnApi} from './api';
 import {HNServerApp} from '../app/env/server';
 
 const indexHtml = fs.readFileSync('src/index.html').toString();
@@ -16,6 +17,7 @@ compileModule(HNServerApp).then(factory => {
   app.get('/best', makeHandler(factory, '/best', indexHtml));
   app.get('/new', makeHandler(factory, '/new', indexHtml));
   app.get('/top', makeHandler(factory, '/top', indexHtml));
+  app.use('/api', hnApi);
   app.use(express.static('release'));
   app.listen(8080);
   console.log('serving on http://localhost:8080');
