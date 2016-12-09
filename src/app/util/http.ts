@@ -12,7 +12,6 @@ export interface ReqResp {
 }
 
 export abstract class HttpService {
-  abstract get requests(): Observable<ReqResp>;
   abstract json<T>(url: string): Observable<T>;
 }
 

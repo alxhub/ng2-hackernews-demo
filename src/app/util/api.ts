@@ -1,7 +1,7 @@
 import {Observable} from 'rxjs/Observable';
 
-export interface HnStory {
-  id: string;
+export interface Story {
+  id: number;
   by: string;
   descendants: number;
   kids: number[];
@@ -12,9 +12,9 @@ export interface HnStory {
   url: string;
 }
 
-export abstract class HnApi {
- abstract getTopStoriesPage(page: number): Observable<HnStory[]>;
- abstract getNewStoriesPage(page: number): Observable<HnStory[]>;
- abstract getBestStoriesPage(page: number): Observable<HnStory[]>;
- abstract getStory(id: number): Observable<HnStory>;
+export abstract class Api {
+ abstract getTopStoriesPage(page: number): Observable<Story[]>;
+ abstract getNewStoriesPage(page: number): Observable<Story[]>;
+ abstract getBestStoriesPage(page: number): Observable<Story[]>;
+ abstract getStory(id: number): Observable<Story>;
 }

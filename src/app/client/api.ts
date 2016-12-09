@@ -1,33 +1,34 @@
 import {Injectable, NgModule} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
-import {HnApi, HnStory} from '../util/api';
+import {Api, Story} from '../util/api';
 import {HttpService} from '../util/http';
 
-export class ClientHnApi implements HnApi {
+@Injectable()
+export class ClientApi implements Api {
   constructor(public http: HttpService) {}
 
- getTopStoriesPage(page: number): Observable<HnStory[]> {
-   return this.http.json<HnStory[]>(`/api/aggregate/topstories/${page}`);
- }
- 
- getNewStoriesPage(page: number): Observable<HnStory[]> {
-   return this.http.json<HnStory[]>(`/api/aggregate/newstories/${page}`);
- }
- 
- getBestStoriesPage(page: number): Observable<HnStory[]> {
-   return this.http.json<HnStory[]>(`/api/aggregate/beststories/${page}`);
- }
- 
- getStory(id: number): Observable<HnStory> {
-   return this.http.json<HnStory>(`/api/story/${id}`);
- }
+  getTopStoriesPage(page: number): Observable<Story[]> {
+    return this.http.json<Story[]>(`/api/aggregate/topstories/${page}`);
+  }
+  
+  getNewStoriesPage(page: number): Observable<Story[]> {
+    return this.http.json<Story[]>(`/api/aggregate/newstories/${page}`);
+  }
+  
+  getBestStoriesPage(page: number): Observable<Story[]> {
+    return this.http.json<Story[]>(`/api/aggregate/beststories/${page}`);
+  }
+  
+  getStory(id: number): Observable<Story> {
+    return this.http.json<Story>(`/api/story/${id}`);
+  }
 }
 
 @NgModule({
   providers: [
-    ClientHnApi,
-    {provide: HnApi, useExisting: ClientHnApi},
+    ClientApi,
+    {provide: Api, useExisting: ClientApi},
   ],
 })
-export class ClientHnApiModule {}
+export class ClientApiModule {}

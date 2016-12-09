@@ -20,6 +20,7 @@
     "yargs": "^6.0.0"
   },
   "dependencies": {
+    "@angular/app-shell": "^0.1.0",
     "@angular/common": "2.1.0",
     "@angular/compiler": "2.1.0",
     "@angular/compiler-cli": "2.1.0",

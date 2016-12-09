@@ -12,7 +12,7 @@ gulp.task('task:client:rollup', done => runRollup());
 gulp.task('task:client:copy', () => gulp
   .src([
     'src/index.html',
-    'src/app/global.css',
+    'src/global.css',
     'node_modules/zone.js/dist/zone.js',
   ])
   .pipe(gulp.dest('release')));

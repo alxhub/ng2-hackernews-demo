@@ -2,9 +2,10 @@ import {UniversalModule} from 'angular2-universal';
 
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {APP_BASE_HREF} from '@angular/common';
+import {AppShellModule} from '@angular/app-shell';
 import {AppModule} from '../module'
 import {App} from '../component';
-import {ServerHnApiModule} from '../server/api';
+import {ServerApiModule} from '../server/api';
 import {ServerHttpModule} from '../server/http';
 
 declare var Zone: any;
@@ -14,9 +15,10 @@ declare var Zone: any;
   ],
   imports: [
     AppModule,
-    ServerHnApiModule,
+    ServerApiModule,
     ServerHttpModule,
     UniversalModule,
+    AppShellModule.prerender(),
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue: '/'},

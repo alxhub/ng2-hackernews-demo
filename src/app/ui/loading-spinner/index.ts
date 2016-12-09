@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'hn-item',
+  moduleId: module.id,
+  selector: 'loading-spinner',
   templateUrl: './template.html',
-  styleUrls: ['./style.css'],
 })
-export class HnItem {}
+export class LoadingSpinner {}
