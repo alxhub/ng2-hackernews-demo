@@ -13,10 +13,11 @@ compileModule(HNServerApp).then(factory => {
   const time = Date.now() - start;
   console.log(`compiled app in ${time} ms`);
   const app = express();
-  app.get('/', makeHandler(factory, '/', indexHtml));
-  app.get('/best', makeHandler(factory, '/best', indexHtml));
-  app.get('/new', makeHandler(factory, '/new', indexHtml));
-  app.get('/top', makeHandler(factory, '/top', indexHtml));
+  app.get('/', makeHandler(factory, indexHtml));
+  app.get('/best', makeHandler(factory, indexHtml));
+  app.get('/new', makeHandler(factory, indexHtml));
+  app.get('/top', makeHandler(factory, indexHtml));
+  app.get('/item/:id', makeHandler(factory, indexHtml));
   app.use('/api', hnApi);
   app.use(express.static('release'));
   app.listen(8080);

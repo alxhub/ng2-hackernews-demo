@@ -18,6 +18,7 @@ export class ServerHttpService implements HttpService {
   // Universal tracks http requests specially, via `PreloadHttp` which is provided as
   // `Http` at the platform level. `PreloadHttp._async` is incremented for every outgoing
   // request, and decremented when those requests complete.
+  // TODO: create a service that [ab]uses `PreloadHttp` to do this.
   get async(): number {
     return (this.http as PreloadHttp)._async;
   }

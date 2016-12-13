@@ -3,13 +3,13 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 
 import {HnComment} from './hn-comment';
-import {LiHnStory} from './li-hn-story';
+import {HnStory} from './hn-story';
 import {LoadingSpinner} from './loading-spinner';
 import {TimeAgo} from './timeAgo';
 
 export const PUBLIC_DECLARATIONS = [
   HnComment,
-  LiHnStory,
+  HnStory,
   LoadingSpinner,
   TimeAgo,
 ];

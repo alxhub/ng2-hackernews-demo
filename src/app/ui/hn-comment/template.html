@@ -1,15 +1,17 @@
-<!--
-<div class="by">
-  <a routerLink="['user', comment.by]">{{ comment.by }}</a>
-  {{ comment.time | timeAgo }} ago
-  <span *ngIf="comment.kids && comment.kids.length">
-    | <a class="expand" (click)="open = !open">
-      {{ (open ? 'collapse ' : 'expand ')}}
-    </a>
-  </span>
-</div>
-<div class="text" [innerHtml]="comment.text"></div>
-<ul class="comment-children" v-show="open">
-  <comment-view *ngFor="let id of comment.kids" [id]="id"></comment-view>
-</ul>
--->
+<ng-container *ngIf="comment">
+  <div class="by">
+    <a routerLink="['user', comment.by]">{{ comment.by }}</a>
+    {{ comment.time | timeAgo }} ago
+    <span>
+      | <a class="expand" (click)="toggle()">
+        {{ (open ? 'collapse ' : 'expand ') }}
+      </a>
+    </span>
+  </div>
+  <ng-container *ngIf="open">
+    <div class="text" [innerHtml]="comment.text"></div>
+    <ul class="comment-children" *ngIf="open">
+      <li *ngFor="let child of comment.children" hn-comment [comment]="child"></li>
+    </ul>
+  </ng-container>
+</ng-container>

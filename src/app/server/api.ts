@@ -1,19 +1,23 @@
 import {Injectable, NgModule} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
+
 import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/observable/defer';
+import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/defaultIfEmpty';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 
-import {Api, Story} from '../util/api';
-import {HttpService, HttpCacheService} from '../util/http';
+import {Api, Story, ExStory, ExComment} from '../util/api';
+import {hn, HnFirebase} from '../../server/hn';
+import {HttpCacheService} from '../util/http';
 
 const PAGE_SIZE = 2;
 
 @Injectable()
 export class ServerApi implements Api {
-  constructor(public http: HttpService, public cache: HttpCacheService) {}
+  constructor(public hn: HnFirebase, public cache: HttpCacheService) {}
 
   getTopStoriesPage(page: number): Observable<Story[]> {
     return this.getStoriesPage('topstories', page);
@@ -27,21 +31,22 @@ export class ServerApi implements Api {
     return this.getStoriesPage('beststories', page);
   }
 
-  getStory(id: number): Observable<Story> {
-    return this
-      .json<Story>(`item/${id}`)
+  getStory(id: number): Observable<ExStory> {
+    console.log('getStory(id)', id);
+    return Observable
+      .defer(() => Observable.fromPromise(this.hn.exStory(id, 3)))
       .do(story => this.cache.add(`/api/story/${id}`, JSON.stringify(story)));
   }
 
-  private json<T>(path: string): Observable<T> {
-    return this.http.json<T>(`https://hacker-news.firebaseio.com/v0/${path}.json`);
+  getComment(id: number): Observable<ExComment> {
+    return Observable
+      .defer(() => Observable.fromPromise(this.hn.exComment(id, 1)))
+      .do(comment => this.cache.add(`/api/comment/${id}`, JSON.stringify(comment)));
   }
 
   private getStoriesPage(path: string, page: number): Observable<Story[]> {
-    return this
-      .json<number[]>(path)
-      .map(stories => pageFn(stories, page))
-      .switchMap<Story[]>(ids => this.getStories(ids))
+    return Observable
+      .defer(() => Observable.fromPromise(this.hn.storyPage(path, page)))
       .do(stories => this.cache.add(`/api/aggregate/${path}/${page}`, JSON.stringify(stories)))
   }
 
@@ -60,6 +65,7 @@ function pageFn(stories: number[], page: number): number[] {
   providers: [
     ServerApi,
     {provide: Api, useExisting: ServerApi},
+    {provide: HnFirebase, useValue: hn},
   ],
 })
 export class ServerApiModule {}

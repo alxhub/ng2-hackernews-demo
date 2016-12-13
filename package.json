@@ -45,7 +45,7 @@
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
-    "firebase": "2.4.2",
+    "firebase": "^3.6.3",
     "google-closure-compiler": "^20161024.3.0",
     "google-closure-compiler-js": "^20160916.0.0",
     "gulp": "^3.9.1",

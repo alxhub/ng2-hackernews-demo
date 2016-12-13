@@ -5,7 +5,7 @@
   </div>
   <div class="news-list">
     <ul>
-      <li [hn-story]="story" class="list-item" *ngFor="let story of (stories | async); trackBy:trackStory"></li>
+      <li hn-story [story]="story" class="list-item" *ngFor="let story of (stories | async); trackBy:trackStory"></li>
     </ul>
   </div>
 </div>

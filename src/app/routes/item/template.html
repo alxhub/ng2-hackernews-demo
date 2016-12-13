@@ -1,0 +1,6 @@
+<ng-container *ngIf="story">
+  <div hn-story [story]="story"></div>
+  <ul>
+    <li *ngFor="let comment of story.comments" hn-comment [comment]="comment"></li>
+  </ul>
+</ng-container>

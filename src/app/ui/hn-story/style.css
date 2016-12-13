@@ -4,6 +4,7 @@
 	border-bottom: 1px solid #eee;
 	position: relative;
 	line-height: 20px;
+	list-style-type: none;
 }
 
 .score {
