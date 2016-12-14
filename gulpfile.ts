@@ -17,7 +17,6 @@ gulp.task('task:client:rollup', done => runRollup());
 gulp.task('task:client:copy', () => gulp
   .src([
     'src/index.html',
-    'src/global.css',
     'src/manifest.json',
     'src/favicon.ico',
     'node_modules/zone.js/dist/zone.js',
