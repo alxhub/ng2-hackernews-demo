@@ -4,7 +4,7 @@ import * as express from 'express';
 import {platformUniversalDynamic} from 'angular2-universal/node';
 
 // Run angular in production mode.
-//enableProdMode();
+enableProdMode();
 
 export function makeHandler<T>(factory: NgModuleFactory<T>, html: string) {
   return (req: express.Request, resp: express.Response) => {

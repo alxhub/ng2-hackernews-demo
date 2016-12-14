@@ -34,6 +34,6 @@ export class FeedRoute {
   }
 
   trackStory(idx: number, story: Story): number {
-    return story.id;
+    return story ? story.id : null;
   }
 }

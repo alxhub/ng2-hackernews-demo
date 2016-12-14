@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 import {Api, Item, Story, ExStory, Comment, ExComment} from '../app/util/api';
 
-const PAGE_SIZE = 2;
+const PAGE_SIZE = 25;
 
 export class HnFirebase {
   db: firebase.database.Reference;
@@ -25,7 +25,6 @@ export class HnFirebase {
   }
 
   exStory(id: number, level: number): Promise<ExStory> {
-    console.log(`exStory(${id})`);
     return this
       .story(id)
       .then(story => story && story.kids ? Promise

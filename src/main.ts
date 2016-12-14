@@ -4,5 +4,5 @@ import {enableProdMode} from '@angular/core';
 import {hydrateHttpCache} from './app/client/http';
 
 enableProdMode();
-//hydrateHttpCache();
+hydrateHttpCache();
 platformBrowser().bootstrapModuleFactory(HNClientAppNgFactory)

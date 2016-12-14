@@ -1,8 +1,5 @@
 <div class="news-view">
   <loading-spinner *ngIf="!stories">loading...</loading-spinner>
-  <div class="news-list-nav">
-    nav
-  </div>
   <div class="news-list">
     <ul>
       <li hn-story [story]="story" class="list-item" *ngFor="let story of (stories | async); trackBy:trackStory"></li>
