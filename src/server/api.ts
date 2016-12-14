@@ -19,7 +19,7 @@ hnApi.get('/aggregate/:section/:page', (req: express.Request, resp: express.Resp
 
 hnApi.get('/story/:id', (req: express.Request, resp: express.Response) => {
   hn
-    .exStory(parseInt(req.params.id), 3)
+    .exStory(parseInt(req.params.id), 2)
     .then(page => JSON.stringify(page))
     .then(json => {
       resp.write(json);

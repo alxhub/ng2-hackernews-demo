@@ -16,7 +16,7 @@ import {Api, Story, ExStory, ExComment} from '../util/api';
 import {hn, HnFirebase} from '../../server/hn';
 import {HttpCacheService} from '../util/http';
 
-const PAGE_SIZE = 2;
+const PAGE_SIZE = 10;
 
 @Injectable()
 export class ServerApi implements Api {
@@ -42,7 +42,7 @@ export class ServerApi implements Api {
     return Observable
       .defer(() => {
         this.http._async++;
-        return Observable.fromPromise(this.hn.exStory(id, 3));
+        return Observable.fromPromise(this.hn.exStory(id, 2));
       })
       .do(story => this.cache.add(`/api/story/${id}`, JSON.stringify(story)))
       .finally(() => this.http._async--);
