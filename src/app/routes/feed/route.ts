@@ -15,13 +15,11 @@ export class FeedRoute {
   stories: Observable<Story[]>;
 
   constructor(route: ActivatedRoute, api: Api) {
-    console.log('route feed');
     this.stories = route
       .params
       .switchMap(params => {
         switch (params['section']) {
           case 'new':
-          console.log('new');
             return api.getNewStoriesPage(0);
           case 'top':
             return api.getTopStoriesPage(0);

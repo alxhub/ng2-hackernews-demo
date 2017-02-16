@@ -1,12 +1,14 @@
-import 'angular2-universal-polyfills';
+import 'reflect-metadata';
+import 'zone.js/dist/zone-node.js';
 
+import {renderModuleFactory} from '@angular/platform-server';
 import * as express from 'express';
 import * as compression from 'compression';
 import * as fs from 'fs';
 import {compileModule} from './aot';
+import {HNServerApp} from '../app/env/server';
 import {makeHandler} from './universal';
 import {hnApi} from './api';
-import {HNServerApp} from '../app/env/server';
 
 function forceHttps(req: express.Request, res: express.Response, next: express.NextFunction) {
   if (req.protocol === 'https' || req.hostname === 'localhost') {

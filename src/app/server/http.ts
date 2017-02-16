@@ -1,7 +1,6 @@
 import * as https from 'https';
 import {Injectable, NgModule, NgZone} from '@angular/core';
 import {Http} from '@angular/http';
-import {PreloadHttp} from 'angular2-universal';
 import {Observable} from 'rxjs/Observable';
 import {Observer} from 'rxjs/Observer';
 

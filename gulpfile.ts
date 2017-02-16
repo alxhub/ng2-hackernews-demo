@@ -60,7 +60,6 @@ gulp.task('task:build:client', done => runSequence(
     'task:client:copy_images',
     'task:client:delete_unminified',
   ],
-  'task:client:sw',
   done,
 ));
 

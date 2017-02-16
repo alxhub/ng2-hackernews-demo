@@ -1,6 +1,5 @@
-import {UniversalModule} from 'angular2-universal';
-
 import {NgModule, ModuleWithProviders} from '@angular/core';
+import {ServerModule} from '@angular/platform-server';
 import {APP_BASE_HREF} from '@angular/common';
 import {AppShellModule} from '@angular/app-shell';
 import {AppModule} from '../module'
@@ -14,10 +13,10 @@ declare var Zone: any;
     App,
   ],
   imports: [
+    ServerModule,
     AppModule,
     ServerApiModule,
     ServerHttpModule,
-    UniversalModule,
     AppShellModule.prerender(),
   ],
   providers: [
